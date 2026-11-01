@@ -44,7 +44,12 @@ function showFish() {
 }
 
 async function copyFish() {
-  await navigator.clipboard.writeText(output.textContent);
+  try {
+    await navigator.clipboard.writeText(output.textContent);
+    message.textContent = "Gekopieerd!";
+  } catch {
+    message.textContent = "Kopiëren is niet gelukt. Probeer het opnieuw.";
+  }
 }
 
 function downloadFish() {
